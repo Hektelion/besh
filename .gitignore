@@ -2,3 +2,5 @@
 
 # EXECUTABLE
 besh
+
+./obj/*.o
