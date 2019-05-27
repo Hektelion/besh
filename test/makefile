@@ -1,25 +1,26 @@
 ####################################################
-################ MAKEFILE PRINCIPAL ################
+################## MAKEFILE TEST ###################
 ####################################################
 
 #EXECUTION
 CC = gcc
-LDFLAGS =
+LDFLAGS = -lcunit
 CFLAGS = -W -Wall
-EXEC = besh
+EXEC = ../test_besh
 
 INCLUDE = $(wildcard ./include/*.h)
 SRC = $(wildcard ./src/*.c)
 OBJ = $(SRC:./src/%.c=./obj/%.o)
 
-TEST = all
+LINK = ../obj/besh_functions.o ../obj/besh_internal_command.o ../obj/besh_terminate.o ../obj/besh_initialization.o ../obj/besh_interpret.o
+#$(wildcard ../obj/*.o)
 
 ####################################################
 
-all	: $(EXEC)
+all: $(EXEC)
 	@echo "DONE"
 
-$(EXEC)	: $(OBJ) $(TEST)
+$(EXEC)	: $(OBJ) $(LINK)
 	@echo "Création de l'éxecutable"
 	@$(CC) -o $@ $^ $(LDFLAGS)
 	@echo "Création de l'éxecutable : OK"
@@ -31,23 +32,19 @@ obj/%.o : src/%.c
 	@$(CC) -o $@ -c $< $(CFLAGS)
 	@echo Création de $*.o : OK
 
-$(TEST): test
-	@echo "Création de l'executable des tests unitaire"
-	make -C test all
-
 ####################################################
 
-.PHONY	: clean mrproper
+.PHONY: clean mrproper
 
 .IGNORE: clean
 
-clean	:
+clean:
 	rm -f obj/*.o
 
 mrproper: clean
 	rm -rf $(EXEC)
 
-print-%  : ; @echo $* = $($*)
+print-%: ; @echo $* = $($*)
 
 ####################################################
 # Crée par BESSAI Sofiane ##########################

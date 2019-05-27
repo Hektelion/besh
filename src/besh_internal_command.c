@@ -14,7 +14,7 @@
  */
 int besh_help(char **args)
 {
-	printf("NON IMPLEMENTEE\n");
+	fprintf(stderr, "NON IMPLEMENTEE\n");
 	return 1;
 }
 
@@ -37,7 +37,7 @@ int besh_exit()
  */
 int besh_cd(char **args)
 {
-	printf("NON IMPLEMENTEE\n");
+	fprintf(stderr, "NON IMPLEMENTEE\n");
 	return 1;
 }
 
@@ -49,7 +49,7 @@ int besh_cd(char **args)
  */
 int besh_pwd()
 {
-	printf("%s\n", besh_get_cwd());
+	//printf("%s\n", besh_get_cwd());
 	return 1;
 }
 
@@ -61,7 +61,7 @@ int besh_pwd()
  */
 int besh_alias(char **args)
 {
-	printf("NON IMPLEMENTEE\n");
+	fprintf(stderr, "NON IMPLEMENTEE\n");
 	return 1;
 }
 
@@ -73,7 +73,22 @@ int besh_alias(char **args)
  */
 int besh_echo(char **args)
 {
-	printf("NON IMPLEMENTEE\n");
+	int position = 1;
+
+	while (args[position] != NULL) {
+		if(args[position][0] != '$')
+		{
+			fprintf(stdout, "%s ", args[position]);
+		}
+		else
+		{
+			fprintf(stderr, "FONCTIONNALITE NON IMPLEMENTEE\n");
+			return 1;
+		}
+		position++;
+	}
+	fprintf(stdout, "\n");
+
 	return 1;
 }
 
@@ -85,7 +100,7 @@ int besh_echo(char **args)
  */
 int besh_type(char **args)
 {
-	printf("NON IMPLEMENTEE\n");
+	fprintf(stderr, "NON IMPLEMENTEE\n");
 	return 1;
 }
 
@@ -97,6 +112,30 @@ int besh_type(char **args)
  */
 int besh_printenv()
 {
-	printf("NON IMPLEMENTEE\n");
+	fprintf(stderr, "NON IMPLEMENTEE\n");
+	return 1;
+}
+
+/* Entrées    : -
+ * Sorties    : -
+ * Variables  : -
+ * Traitement : -
+ * Erreur	  : -
+ */
+int besh_getenv(char **args)
+{
+	fprintf(stderr, "NON IMPLEMENTEE\n");
+	return 1;
+}
+
+/* Entrées    : -
+ * Sorties    : -
+ * Variables  : -
+ * Traitement : -
+ * Erreur	  : -
+ */
+int besh_putenv(char **args)
+{
+	fprintf(stderr, "NON IMPLEMENTEE\n");
 	return 1;
 }

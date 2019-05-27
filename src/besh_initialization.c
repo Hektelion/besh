@@ -1,39 +1,22 @@
 #include "../include/besh_initialization.h"
 #include "../include/besh_constant.h"
 
-#include <stdio.h> //stderr, printf() et EOF
-#include <stdlib.h>	//EXIT_FAILURE et NULL
-#include <unistd.h> //getcwd
+#include "../include/environement.h"
 
-static char *cwd = NULL;
+//#include <stdio.h> //stderr, printf() et EOF
+//#include <stdlib.h>	//EXIT_FAILURE et NULL
+#include <unistd.h> //environ
 
-char* besh_get_cwd()
+/* Entrées    : -
+* Sorties    : -
+* Variables  : -
+* Traitement : -
+* Erreur	  : -
+*/
+void init_environement()
 {
-	cwd = malloc(sizeof(char) * BESH_CWD_BUFFER_SIZE);
-
-	if(cwd == NULL)
-	{
-		fprintf(stderr, "erreur : allocation cwd\n");
-		exit(EXIT_FAILURE);
-	}
-
-	getcwd(cwd, BESH_CWD_BUFFER_SIZE);
-	if(DEBUG) printf("cwd :%s\n", cwd);
-
-	return cwd;
-}
-
-void besh_initialize()
-{
-	besh_get_cwd();
-}
-
-void besh_clean_configuration()
-{
-	if(cwd != NULL)
-	{
-		if(DEBUG) fprintf(stdout, "libération de cwd\n");
-		free(cwd);
-		cwd = NULL;
-	}
+	for (size_t i = 0; environ[i] != NULL; i++)
+    {
+        printf("%s\n", environ[i]);
+    }
 }

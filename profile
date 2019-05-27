@@ -1,0 +1,5 @@
+SHELL='besh'
+PATH=''
+HOME=''
+PWD=''
+OLDPWD=''

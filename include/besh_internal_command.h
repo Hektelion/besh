@@ -9,5 +9,7 @@ int besh_alias(char **);
 int besh_echo(char **);
 int besh_type(char **);
 int besh_printenv();
+int besh_getenv(char **);
+int besh_putenv(char **);
 
 #endif //__INTERNAL_COMMAND_H__

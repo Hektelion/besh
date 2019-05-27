@@ -9,13 +9,13 @@
 #include <string.h>	//strtok() et strcmp()
 
 /* Entrées    : -
- * Sorties    : la commande entrer par l'utilisateur
- * Variables  : command(chaine de caracteres), buffer_command_size(entier),
- 				position(entier), c(caractere)
- * Traitement : Récupere la commande taper au clavier par l'utilisateur et
- 				la retourne
- * Erreur	  : allocation command, reallocation command
- */
+* Sorties    : la commande entrer par l'utilisateur
+* Variables  : command(chaine de caracteres), buffer_command_size(entier),
+position(entier), c(caractere)
+* Traitement : Récupere la commande taper au clavier par l'utilisateur et
+la retourne
+* Erreur	  : allocation command, reallocation command
+*/
 char* besh_readCommand()
 {
 	char *command = NULL;
@@ -59,13 +59,13 @@ char* besh_readCommand()
 }
 
 /* Entrées    : la commande entrer par l'utilisateur et la liste des délimiteur
- * Sorties    : le nom de la commande et ces parametres
- * Variables  : arg(chaine de caracteres), args(un tableau de chaine de caracteres),
- 				buffer_arg_size(entier), position(entier)
- * Traitement : a partir de la commande et des delimiteurs cette fonction sépare la buffer_command_size
- 				mot par mot et renvoi le tout dans un tableau
- * Erreur	  : allocation args, reallocation args
- */
+* Sorties    : le nom de la commande et ces parametres
+* Variables  : arg(chaine de caracteres), args(un tableau de chaine de caracteres),
+buffer_arg_size(entier), position(entier)
+* Traitement : a partir de la commande et des delimiteurs cette fonction sépare la buffer_command_size
+mot par mot et renvoi le tout dans un tableau
+* Erreur	  : allocation args, reallocation args
+*/
 char **besh_separateCommand(char *command, const char *delimiters)
 {
 	char *arg = NULL;
@@ -84,8 +84,7 @@ char **besh_separateCommand(char *command, const char *delimiters)
 
 	while(arg != NULL)
 	{
-		if(DEBUG) printf("arg :%s\n", arg);
-		//if(DEBUG) printf("buffer_arg_size :%d\n", buffer_arg_size);
+		if(DEBUG) printf("arg[%d] :%s\n", position, arg);
 
 		args[position] = arg;
 		position++;
@@ -105,24 +104,17 @@ char **besh_separateCommand(char *command, const char *delimiters)
 		arg = strtok(NULL, delimiters);
 	}
 
-	/*
-	if(command != NULL)
-	{
-		if(DEBUG) fprintf(stdout, "libération de command\n");
-		free(command);
-		command = NULL;
-	}
-	*/
-
 	return args;
 }
 
-/* Entrées    : -
- * Sorties    : -
- * Variables  : -
- * Traitement : -
- * Erreur	  : -
- */
+/* Entrées    : Le nom de la commande suivi de ces parametres si il y'en a
+* Sorties    : un signal envoyer au shell
+* Variables  : statut(entier)
+* Traitement : Elle cherche dans les commandes internes la commande et l'execute si correspondance
+Sinon elle cherche dans les dossier de binaires cités dans la variable PATH
+Sinon elle affiche un message d'erreur
+* Erreur	  : 1er argument NULL
+*/
 int besh_executeCommand(char **args)
 {
 	int statut = 1;
@@ -168,18 +160,18 @@ int besh_executeCommand(char **args)
 	}
 	else
 	{
-		
+		fprintf(stderr, "erreur : nom de commande null\n");
 	}
 
 	return statut;
 }
 
 /* Entrées    : -
- * Sorties    : -
- * Variables  : -
- * Traitement : -
- * Erreur	  : -
- */
+* Sorties    : -
+* Variables  : -
+* Traitement : -
+* Erreur	  : -
+*/
 void besh_interpretLoop()
 {
 	int statut;
@@ -187,26 +179,38 @@ void besh_interpretLoop()
 	char **args;
 
 	do {
-		fprintf(stdout, "%s >", besh_get_cwd());
+		fprintf(stdout, ">");
 
 		command = besh_readCommand();
 		args = besh_separateCommand(command, BESH_SEPARATOR);
 		statut = besh_executeCommand(args);
 
-		free(command);
-		free(args);
+		besh_clean_interpret(command, args);
 
 	} while(statut);
 
 }
 
 /* Entrées    : -
- * Sorties    : -
- * Variables  : -
- * Traitement : -
- * Erreur	  : -
- */
-void besh_clean_interpret()
+* Sorties    : -
+* Variables  : -
+* Traitement : -
+* Erreur	  : -
+*/
+void besh_clean_interpret(char *command, char **args)
 {
 
+	if(command != NULL)
+	{
+		if(DEBUG) fprintf(stdout, "libération de command\n");
+		free(command);
+		command = NULL;
+	}
+
+	if(args != NULL)
+	{
+		if(DEBUG) fprintf(stdout, "libération de args\n");
+		free(args);
+		args = NULL;
+	}
 }
