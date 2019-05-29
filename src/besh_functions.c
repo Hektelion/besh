@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void replace_str(char *command, char *sym_search, char *sym_remplace)
+void besh_replace_str(char *command, char *sym_search, char *sym_remplace)
 {
 	int occurencies = 0;
 	char *copy_command = command;
@@ -56,31 +56,33 @@ void replace_str(char *command, char *sym_search, char *sym_remplace)
 
 }
 
-void format_str(char *command)
+void besh_sup_space(char *command)
 {
-	//REDIRECTION DROITE >
-	replace_str(command," >",">");
-	replace_str(command,"> ",">");
-	replace_str(command,">"," > ");
-
-	//REDIRECTION GAUCHE <
-	replace_str(command," <","<");
-	replace_str(command,"< ","<");
-	replace_str(command,"<"," < ");
-
-	//DOUBLE REDIRECTION DROITE >>
-	replace_str(command," >  > "," >> ");
-
-	//DOUBLE REDIRECTION GAUCHE <<
-	replace_str(command," <  < "," << ");
-
-	//PIPE
-	replace_str(command," |","|");
-	replace_str(command,"| ","|");
-	replace_str(command,"|"," | ");
+	besh_replace_str(command,"  "," ");
 }
 
-void sup_space(char *command)
+void besh_format_str(char *command)
 {
-	
+	//REDIRECTION DROITE >
+	besh_replace_str(command," >",">");
+	besh_replace_str(command,"> ",">");
+	besh_replace_str(command,">"," > ");
+
+	//REDIRECTION GAUCHE <
+	besh_replace_str(command," <","<");
+	besh_replace_str(command,"< ","<");
+	besh_replace_str(command,"<"," < ");
+
+	//DOUBLE REDIRECTION DROITE >>
+	besh_replace_str(command," >  > "," >> ");
+
+	//DOUBLE REDIRECTION GAUCHE <<
+	besh_replace_str(command," <  < "," << ");
+
+	//PIPE
+	besh_replace_str(command," |","|");
+	besh_replace_str(command,"| ","|");
+	besh_replace_str(command,"|"," | ");
+
+	besh_sup_space(command);
 }

@@ -1,8 +1,6 @@
 #include "../include/besh_internal_command.h"
 #include "../include/besh_constant.h"
 
-#include "../include/besh_initialization.h" //besh_get_cwd()
-
 #include <stdio.h> //printf()
 #include <stdlib.h>	//EXIT_FAILURE, EXIT_FAILURE et NULL
 
@@ -24,7 +22,7 @@ int besh_help(char **args)
  * Traitement : -
  * Erreur	  : -
  */
-int besh_exit()
+int besh_exit(char **args)
 {
 	return 0;
 }
@@ -47,9 +45,9 @@ int besh_cd(char **args)
  * Traitement : -
  * Erreur	  : -
  */
-int besh_pwd()
+int besh_pwd(char **args)
 {
-	//printf("%s\n", besh_get_cwd());
+	fprintf(stderr, "NON IMPLEMENTEE\n");
 	return 1;
 }
 
@@ -99,42 +97,6 @@ int besh_echo(char **args)
  * Erreur	  : -
  */
 int besh_type(char **args)
-{
-	fprintf(stderr, "NON IMPLEMENTEE\n");
-	return 1;
-}
-
-/* Entrées    : -
- * Sorties    : -
- * Variables  : -
- * Traitement : -
- * Erreur	  : -
- */
-int besh_printenv()
-{
-	fprintf(stderr, "NON IMPLEMENTEE\n");
-	return 1;
-}
-
-/* Entrées    : -
- * Sorties    : -
- * Variables  : -
- * Traitement : -
- * Erreur	  : -
- */
-int besh_getenv(char **args)
-{
-	fprintf(stderr, "NON IMPLEMENTEE\n");
-	return 1;
-}
-
-/* Entrées    : -
- * Sorties    : -
- * Variables  : -
- * Traitement : -
- * Erreur	  : -
- */
-int besh_putenv(char **args)
 {
 	fprintf(stderr, "NON IMPLEMENTEE\n");
 	return 1;

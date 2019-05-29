@@ -10,4 +10,6 @@
 
 #define BESH_SEPARATOR "\a\n\r\t "
 
+#define NB_INTERNAL_COMMANDS 7
+
 #endif //__CONSTANT_H__

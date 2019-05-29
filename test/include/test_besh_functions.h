@@ -1,8 +1,9 @@
 #ifndef __TEST_FUNCTIONS_H__
 #define __TEST_FUNCTIONS_H__
 
-void test_replace_str();
-void test_format_str();
-void test_sup_space();
+void test_besh_replace_str();
+void test_besh_sup_space();
+
+void test_besh_format_str();
 
 #endif //__TEST_FUNCTIONS_H__

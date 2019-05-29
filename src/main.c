@@ -8,7 +8,7 @@
 int main(){
 
 	//CONFIGURATION
-	init_environement();
+	besh_initenvironement();
 
 	//INTERPRETATION
 	besh_interpretLoop();

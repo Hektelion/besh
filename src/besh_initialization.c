@@ -3,20 +3,63 @@
 
 #include "../include/environement.h"
 
-//#include <stdio.h> //stderr, printf() et EOF
+#include <stdio.h> //stderr, printf() et EOF
 //#include <stdlib.h>	//EXIT_FAILURE et NULL
 #include <unistd.h> //environ
 
-/* Entrées    : -
+/* Entrées   : -
 * Sorties    : -
 * Variables  : -
 * Traitement : -
-* Erreur	  : -
+* Erreur     : -
 */
-void init_environement()
+char *besh_getenv(char *name)
 {
-	for (size_t i = 0; environ[i] != NULL; i++)
-    {
-        printf("%s\n", environ[i]);
-    }
+
+}
+
+/* Entrées   : -
+* Sorties    : -
+* Variables  : -
+* Traitement : -
+* Erreur     : -
+*/
+int besh_putenv(char *name_equal_val)
+{
+
+}
+
+/* Entrées   : -
+* Sorties    : -
+* Variables  : -
+* Traitement : -
+* Erreur     : -
+*/
+int besh_setenv(char *name, const char *value, int overwrite)
+{
+
+}
+
+/* Entrées   : -
+* Sorties    : -
+* Variables  : -
+* Traitement : -
+* Erreur     : -
+*/
+int besh_unsetenv(const char *name)
+{
+
+}
+
+
+
+/* Entrées   : -
+* Sorties    : -
+* Variables  : -
+* Traitement : -
+* Erreur     : -
+*/
+int besh_initenvironement()
+{
+
 }
