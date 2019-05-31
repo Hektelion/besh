@@ -1,5 +1,6 @@
-SHELL='besh'
-PATH=''
-HOME=''
-PWD=''
-OLDPWD=''
+SHELL=besh
+PATH=
+HOME=
+PWD=
+OLDPWD=
+USER=

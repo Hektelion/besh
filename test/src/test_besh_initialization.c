@@ -30,5 +30,5 @@ void test_besh_unsetenv()
 
 void test_besh_initenvironement()
 {
-
+	besh_initenvironement();
 }

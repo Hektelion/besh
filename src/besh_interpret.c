@@ -73,6 +73,10 @@ char **besh_separateCommand(char *command, const char *delimiters)
 	int buffer_arg_size = BESH_ARGS_BUFFER_SIZE;
 	int position = 0;
 
+	besh_format_str(command);
+
+	if(DEBUG) printf("command re-formaté :%s", command);
+
 	args = malloc(sizeof(char*) * buffer_arg_size);
 	if(args == NULL)
 	{

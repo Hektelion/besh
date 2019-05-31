@@ -56,11 +56,6 @@ void besh_replace_str(char *command, char *sym_search, char *sym_remplace)
 
 }
 
-void besh_sup_space(char *command)
-{
-	besh_replace_str(command,"  "," ");
-}
-
 void besh_format_str(char *command)
 {
 	//REDIRECTION DROITE >
@@ -84,5 +79,4 @@ void besh_format_str(char *command)
 	besh_replace_str(command,"| ","|");
 	besh_replace_str(command,"|"," | ");
 
-	besh_sup_space(command);
 }

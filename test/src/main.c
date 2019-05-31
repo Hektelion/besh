@@ -29,8 +29,7 @@ int main(){
 	}
 
 	// Ajoute les tests de la couche 0 à la suite
-	if ( ( CU_add_test(pSuite, "test of besh_replace_str()", test_besh_replace_str) ) == NULL ||
-	( CU_add_test(pSuite, "test of besh_sup_space()", test_besh_sup_space) ) == NULL ) {
+	if ( ( CU_add_test(pSuite, "test of besh_replace_str()", test_besh_replace_str) ) == NULL ) {
 		CU_cleanup_registry();
 		return CU_get_error();
 	}
